@@ -1,0 +1,20 @@
+{% load static %}
+
+	<div class="modal-dialog modal-dialog-centered">
+  		<div class="modal-content">
+			<div class="modal-header bg-primary bg-opacity-50 text-light">
+				<h5 class="modal-title">En cours d'enregistrement...</h5>
+			</div>
+			<div class="modal-body">
+                <p id="hid_modale_nombre_questions">Aujourd'hui, sur {{ user.nombreQuestions }} question(s) : </p>
+                <p class="indentation" id="hid_modale_resultats_justes"> {{ user.reponsesJustesPourcentage }}% de réponses justes.</p>
+                <p class="indentation" id="hid_modale_resultats_faux"> {{ user.reponsesFaussesPourcentage }}% de réponses fausses.</p>
+                <p class="indentation" id="hid_modale_temps"> Temps moyen pour répondre : {{ dureeMoyenDuJeu }} s.</p>
+            </div>
+			<div class="modal-footer">
+				<button onclick="window.location.href = 'http://127.0.0.1:8000';" type="button" class="btn btn-primary" data-bs-dismiss="modal">Quitter</button>
+				<!--<button onclick="window.location.href = '/account/graphique/';" type="button" class="btn btn-primary" data-bs-dismiss="modal">Quitter</button>-->
+				<!--<button type="button" class="btn btn-primary" data-bs-dismiss="modal">Quitter</button>-->
+			</div>
+  		</div>
+	</div>

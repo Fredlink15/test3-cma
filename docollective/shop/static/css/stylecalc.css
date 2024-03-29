@@ -1,0 +1,100 @@
+/*
+#video {
+    height: 50vh;
+    width: 100vw;
+    object-fit: cover;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: -1;
+}
+
+#h1 {
+    color: white;
+    font-family: Trebuchet MS;
+    font-weight: bold;
+    text-align: center;
+    font-size: 6rem;
+    margin-top: 10vh;
+}
+
+#h2 {
+    color: white;
+    font-family: Trebuchet MS;
+    font-weight: bold;
+    text-align: center;
+    font-size: 3rem;
+}
+*/
+
+
+
+
+.champ {
+	height: 80 px;
+}
+
+.indentation {
+    text-indent: 50px;
+}
+
+#hid_container {
+    height: 202px;
+}
+
+#footer {
+    position: absolute;
+    bottom: 0;
+}
+
+space{
+    margin :30px;
+}
+
+#reponse {
+    display:flex;
+}
+
+.hid_commentaire {
+    style.color="#198754";
+}
+
+.vrai::placeholder {
+    color: #198754;
+    opacity: 1;
+}
+
+.vrai {
+    border-color:#198754;
+}
+
+.faux::placeholder {
+    color: #DC3545;
+    opacity: 1;
+}
+
+.faux {
+    border-color:#DC3545;
+}
+
+.formule {
+    display : flex;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    background: none;
+    width: 0;
+    border: none;
+}
+
+input[type="number"] {
+    -moz-appearance:textfield;
+}
+
+/*.seeker {
+    background-image: linear-gradient(to right, rgb(39, 163, 245) calc(50%), rgb(217,224,230) calc(50%));
+}*/

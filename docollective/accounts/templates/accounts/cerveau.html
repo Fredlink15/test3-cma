@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Index{% endblock %}
+{% block body %}
+
+
+<div align="justify" class="container">
+    <br>
+    <a href="#T1"><h3 class="fw-normal text-color:primary text-primary opacity-50">I – Cerveau et mémoires</h3></a>
+    <a href="#T2"><h3 class="fw-normal text-color:primary text-primary opacity-50">II - La mémorisation</h3></a>
+    <a href="#T3"><h3 class="fw-normal text-color:primary text-primary opacity-50">III - Le calcul mental</h3></a>
+    <a href="#T4"><h3 class="fw-normal text-color:primary text-primary opacity-50">IV – Améliorer ses performances</h3></a>
+    <a href="#T5"><h3 class="fw-normal text-color:primary text-primary opacity-50">V – Le calcul mental, à quoi ça sert ? </h3></a>
+    <br>
+    <br>
+    <br>
+    <h1 class="display-6 fw text-color:primary text-primary opacity-50" id="T1">I – Cerveau et mémoires</h1>
+    <p align="center">
+        <img src="{% static 'assets/cerveau.png' %}" class="img-fluid">
+    </p>
+    <p>Notre cerveau possède deux types de mémoire : la mémoire à long terme (MLT) et la mémoire à court terme (MCT).
+        <ul>
+            <li>La mémoire à long terme permet de stocker des informations sur un temps pratiquement illimité. Le stockage d'informations dans la mémoire à long terme nécessite des efforts... Exemple : les tables de multiplication.</li>
+            <li>La mémoire à court terme est en revanche une mémoire limité, qui ne permet de retenir que quelques informations (7 + ou - 2 unités d’informations selon Georges Miller - 1956) sur un temps très court (de 10 à 30 sec). Exemple : un numéro de téléphone que l’on vient de nous donner. La mémoire de travail (terme apparue en 1970) est constituée de la mémoire à court terme et d’un processus exécutif permettant de manipuler, de traiter l’information présent dans la mémoire à court terme. La mémoire de travail est essentielle pour les raisonnements, la résolution de problème et plus globalement pour les apprentissages scolaires.</li>
+    </ul>
+    </p>
+    <br>
+    <h1 class="display-6 fw text-color:primary text-primary opacity-50" id="T2">II - La mémorisation</h1>
+    <p>
+    L’étape de mémorisation (passage de l’information à la connaissance) s’effectue en 3 étapes :
+        <ul>
+            <li>l’encodage (passage de l’information dans la mémoire à court terme) ;</li>
+            <li>la consolidation ou stockage (passage de la mémoire à court terme à la mémoire à long terme) ;</li>
+            <li>la récupération ou réactivation (permet d’extraire de la mémoire à long terme des connaissances afin de les traiter dans la mémoire de travail).</li>
+        </ul>
+    </p>
+    <p align="center">
+        <img src="{% static 'assets/memoires.png' %}" class="img-fluid">
+    </p>
+    <p>
+    Afin d’optimiser la tâche de mémorisation, il faut :
+        <ul>
+            <li>une pratique répétée ; </li>
+            <li>étalée dans le temps et alternée avec d’autres apprentissages ;</li>
+            <li>des tests avec un retour le plus instantané possible.</li>
+        </ul>
+    </p>
+    <br>
+    <h1 class="display-6 fw text-color:primary text-primary opacity-50" id="T3">III - Le calcul mental</h1>
+    <p>
+    Le calcul mental consiste à effectuer des calculs sans autre support que sa réflexion et sa mémoire. Il existe deux types de calcul mental :
+        <ul>
+            <li>Le calcul mental automatisé ; </li>
+            <li>Le calcul mental réfléchi.</li>
+        </ul>
+    </p>
+    <p>Le calcul mental automatisé mobilise des connaissances stocker dans la mémoire à long terme, ce type de calcul ne nécessite que très peu d’effort si l’individu a bien ancré en lui ces connaissances. Attention, ces connaissances n’existent pas, dès la naissance, dans notre mémoire à long terme. Elle se construisent progressivement et différemment d’un individu à l’autre. </p>
+    <p>Pour le calcul mental réfléchi, l’individu mobilise sa mémoire de travail (mémoire à court terme et fonctions exécutives de réflexion, de traitement…).  La mémoire de travail va faire appel à des automatismes stockés dans la mémoire à long termes et mettre en place une stratégie pour répondre à la question posée. La partie automatisée joue le rôle d’outil au service de la mémoire de travail.</p>
+    <p>La frontière entre calcul mental automatisé et calcul mental réfléchi n’est pas nette, elle dépend de l’individu et évolue au cours du temps. Le calcul mental réfléchi travaillé à un certain âge peut devenir du calcul mental automatisé avec le temps.</p>
+    <br>
+    <h1 class="display-6 fw text-color:primary text-primary opacity-50" id="T4">IV – Améliorer ses performances</h1>
+    <p>Pour améliorer le calcul mental automatisé, l’individu doit mémoriser certains résultats en les répétant à l’oral, à l’écrit, en les récitant ou en les mobilisant lors de sollicitations intérieures ou extérieures. Intérieur quand lui-même essai de se remémorer certains résultats et extérieurs quand on lui pose une question par exemple. Un individu doit répéter ce processus d’apprentissage tel un musicien fait ses gammes…</p>
+    <p>Pour améliorer le calcul réfléchi, l’individu doit connaitre le sens des nombres et des opérations mathématiques de base ainsi que leurs propriétés. Un entraînement régulier peut permettre d’assoir certaines stratégies et d’en découvrir de nouvelles. A force de pratique, certaines procédures ou stratégies peuvent elles-mêmes devenir des automatismes, on parle alors « procédure automatisées ».</p>
+    <p>La réussite au calcul mental réfléchi dépend notamment de l’importance des automatismes de l’individu. Plus il y a d’automatismes, plus ils sont solidement ancrés et facilement mobilisables, plus l’individu libèrera sa mémoire de travail et pourra ainsi la consacrer à la réflexion, au choix de la stratégie, à l’élaboration de celle-ci. </p>
+    <br>
+    <h1 class="display-6 fw text-color:primary text-primary opacity-50" id="T5">V – Le calcul mental, à quoi ça sert ? </h1>
+    <p>La pratique régulière du calcul mental permet de développer l’acquisition d’automatismes (apprentissage déclaratif et apprentissage procédurale) et par conséquent d’enrichir ses connaissances dans la mémoire à long termes. Facilement mobilisables, ces connaissances libèreront ainsi une partie de la mémoire de travail de l’individu lui permettant de plus se concentrer sur la réflexion, la stratégie à choisir… Plus ces automatismes seront en quantité importante pour un individu, plus il se sentira à l’aise dans la partie réfléchie et plus cela lui donnera confiance en lui. L’acquisition de compétences mathématiques sera ainsi grandement favorisée par le développement d’automatismes et la pratique régulière du calcul mental réfléchi.</p>
+
+
+
+
+
+
+
+</div>
+
+{% endblock %}

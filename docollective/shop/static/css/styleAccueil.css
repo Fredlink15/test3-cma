@@ -1,0 +1,126 @@
+/*FOND LINEAIRE BLEU GRIS*/
+.bg {
+  width: 100%;
+  height: auto;
+  /*min-height: 50vh;*/
+  display: flex;
+  padding-top: 20px 0px 20px;
+  /*align-items: center;*/
+  justify-content: center;
+  background-size: 100% 100%;
+  /*background-image: linear-gradient(-45deg, #e4e8ff 0%, #abbdff 25%, #6093ff 51%, #0080ff 100%);*/
+  background-image: linear-gradient(-45deg, #e4e8ff 0%, #DCDCDC 25%, #6093ff 51%, #AFAFAF 100%);
+  -webkit-animation: AnimateBG 15s ease infinite;
+          animation: AnimateBG 15s ease infinite;
+}
+@-webkit-keyframes AnimateBG {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+@keyframes AnimateBG {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+/*FOND LINEAIRE BLEU GRIS*/
+
+
+/*TEXTE QUI APPARAIT*/
+.ml11 {
+  font-weight: 700;
+  font-size: 3.5em;
+}
+
+.ml11 .text-wrapper {
+  position: relative;
+  display: inline-block;
+  padding-top: 0.1em;
+  padding-right: 0.05em;
+  padding-bottom: 0.15em;
+}
+
+.ml11 .line {
+  opacity: 0;
+  position: absolute;
+  left: 0;
+  height: 100%;
+  width: 3px;
+  background-color: #fff;
+  transform-origin: 0 50%;
+}
+
+.ml11 .line1 {
+  top: 0;
+  left: 0;
+}
+
+.ml11 .letter {
+  display: inline-block;
+  line-height: 1em;
+}
+
+/*TEXTE QUI APPARAIT*/
+
+/*IMAGES*/
+#cerveau{
+    width : 70%;
+    height : 70%;
+}
+
+/*EFFET MACHINE A ECRIRE*/
+
+.animate-text {
+    visibility:hidden;
+    font-family:"arial",sans-serif;
+    color:white;
+}
+
+/* déco */
+.animate-text {
+  width:500px; /* pour visualiser le passage a la ligne */
+  /*border:1px dashed #ccc;*/
+}
+
+
+/*IMAGES CAROUSEL*/
+#carousel1 #carousel2 #carousel3{
+    border-color: #666 ;
+    border-radius: 50% 50% 50% 50%;
+    border-width: 25px;
+    height: 200px;
+    width: 200px;
+}
+
+#bandeau{
+    height: 100px;
+}
+
+
+/* effet machine à écrire + animation CSS (SPECIAL) */
+
+/*
+.animate-text span {
+	display:inline-block;
+  color:purple;
+  animation:fade-in 0.8s ease-in-out 1;
+	animation-fill-mode: forwards;
+}
+@keyframes fade-in {
+	0% { opacity:0; font-size:0; xxmargin-left:100px; }
+  100% { opacity:1; xxfont-size:300%; xxtransform:rotate(360deg); margin-left:0; }
+}
+*/
+

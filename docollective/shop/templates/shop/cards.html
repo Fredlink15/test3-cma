@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Index{% endblock %}
+{% block body %}
+
+<!--<div class="row mb-5">
+    <h2 class="text-center">Exemples de techniques à revoir</h2>
+</div>-->
+
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-md-4 col-lg-4">
+            <div class="card mx-auto shadow" style="width: 80%;">
+              <img src={% static 'assets/les_tables.jpg' %} class="card-img-top" alt="">
+              <div class="card-body">
+                <h5 class="card-title">Les tables</h5>
+                <p class="card-text">Les tables de multiplication doivent être un automatismes. Il faut les savoir par coeur. Une table de multiplication affiche dans les lignes et colonnes le résultat de la multiplication des petits nombres entiers naturels. Le terme usité du Moyen Âge au xvie siècle était « livret » (ce terme est encore courant en Suisse).</p>
+                <a href="#" class="btn btn-primary">En savoir plus</a>
+              </div>
+            </div>
+            <br>
+        </div>
+
+        <div class="col-12 col-md-4 col-lg-4">
+            <div class="card mx-auto shadow" style="width: 80%;">
+              <img src={% static 'assets/les_tables.jpg' %} class="card-img-top" alt="">
+              <div class="card-body">
+                <h5 class="card-title">Les tables</h5>
+                <p class="card-text">Les tables de multiplication doivent être un automatismes. Il faut les savoir par coeur. Une table de multiplication affiche dans les lignes et colonnes le résultat de la multiplication des petits nombres entiers naturels. Le terme usité du Moyen Âge au xvie siècle était « livret » (ce terme est encore courant en Suisse).</p>
+                <a href="#" class="btn btn-primary">En savoir plus</a>
+              </div>
+            </div>
+            <br>
+        </div>
+
+        <div class="col-12 col-md-4 col-lg-4 bg-transparent">
+            <div class="card mx-auto shadow" style="width: 80%;">
+              <img src={% static 'assets/les_tables.jpg' %} class="card-img-top" alt="">
+              <div class="card-body">
+                <h5 class="card-title">Les tables</h5>
+                <p class="card-text">Les tables de multiplication doivent être un automatismes. Il faut les savoir par coeur. Une table de multiplication affiche dans les lignes et colonnes le résultat de la multiplication des petits nombres entiers naturels. Le terme usité du Moyen Âge au xvie siècle était « livret » (ce terme est encore courant en Suisse).</p>
+                <a href="#" class="btn btn-primary">En savoir plus</a>
+              </div>
+            </div>
+        <!--
+        </div>
+            <div class="col-12 col-md-6 col-lg-3">
+            <div class="card" style="width: 18rem;">
+              <img src={% static 'assets/les_tables.jpg' %} class="card-img-top" alt="">
+              <div class="card-body">
+                <h5 class="card-title">Les tables</h5>
+                <p class="card-text">Les tables de multiplication doivent être un automatismes. Il faut les savoir par coeur. Une table de multiplication affiche dans les lignes et colonnes le résultat de la multiplication des petits nombres entiers naturels. Le terme usité du Moyen Âge au xvie siècle était « livret » (ce terme est encore courant en Suisse).</p>
+                <a href="#" class="btn btn-primary">En savoir plus</a>
+              </div>
+            </div>
+        </div>
+        -->
+
+</div>
+</div>
+
+<section class="pt-2">
+    <div class="container px-4 px-lg-5 mt-5"></div>
+</section>
+
+
+
+
+
+
+
+
+<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+
+    {% for garment in garments %}
+    <div class="col mb-5">
+
+        <div class="card h-100">
+            <!-- Product image-->
+            <img class="card-img-top" src="{{ garment.pics_1.url }}"/>
+            <!-- Product details-->
+            <div class="card-body p-4">
+                <div class="text-center">
+                    <!-- Product name-->
+                    <h5 class="fw-bolder">{{ garment.description }}</h5>
+                    <!-- Product price-->
+                    {{ garment.price }} € <br>
+
+                    <!-- Product state-->
+                    {{ garment.get_state_display }} <br>
+                    <!-- Product size-->
+                    Taille {{ garment.size }}<br>
+                    <!-- Product year-->
+                    Année {{ garment.garment_year }}
+                </div>
+            </div>
+            <!-- Product actions-->
+            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                <div class="text-center"><a class="btn btn-outline-dark mt-auto"
+                                            href="{% url 'shop:detail' slug=garment.slug pk=garment.pk %}">Détail</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% endfor %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,147 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}graphique{% endblock %}
+
+{% block body %}
+
+<!--<!DOCTYPE html> -->
+<html lang="fr" xmlns:padding-left="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Graphique radar</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="{% static 'css/stylecalc.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+<div class="container-fluid">
+    <!--<div class="row">
+
+        <div class="col bg-warning text-black">
+            <div class="text-center">
+                <br>
+                <br>
+                <div class="card mx-auto mb-5" style="width: 18rem;">
+                    <div class="card-header"> Profil </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Email : {{ user.email }}</li>
+                        <li class="list-group-item">Pseudo : {{ user.username }}</li>
+                        <li class="list-group-item">Nom : {{ user.first_name }}</li>
+                        <li class="list-group-item">Prénom : {{ user.last_name }}</li>
+                    </ul>
+                </div>
+                    <a href="{% url 'accounts:profile-update' pk=user.pk %}" class="btn btn-outline-primary">Mettre à jour mes
+                     informations</a>
+                    <br>
+                    <br>
+                    <a href="{% url 'accounts:change-password' %}" class="btn btn-primary text-light">Modifier mon mot de passe</a>
+             </div>
+
+        </div>
+    </div>-->
+        <h2 class="pb-3" style="text-align:center">Classements</h2>
+
+        <div class="row align-items-center">
+            <div class="col-6 mx-auto mb-5" style="width: 23rem;">
+                   <ul class="list-group">
+                       <li class="list-group-item list-group-item-primary">Plus grand nombre de bonnes réponses</li>
+                       <li class="list-group-item indentation">1er : {{ user.email }}</li>
+                       <li class="list-group-item indentation">2e : {{ user.username }}</li>
+                       <li class="list-group-item indentation">3e : {{ user.first_name }}</li>
+                   </ul>
+            </div>
+
+            <div class="col-6 mx-auto mb-5" style="width: 23rem;">
+                   <ul class="list-group">
+                       <li class="list-group-item list-group-item-primary">Les plus rapides</li>
+                       <li class="list-group-item indentation">1er : {{ user.email }}</li>
+                       <li class="list-group-item indentation">2e : {{ user.username }}</li>
+                       <li class="list-group-item indentation">3e : {{ user.first_name }}</li>
+                   </ul>
+            </div>
+
+            <div class="col-6 mx-auto mb-5" style="width: 23rem;">
+                   <ul class="list-group">
+                       <li class="list-group-item list-group-item-primary">Meilleurs combos</li>
+                       <li class="list-group-item indentation">1er : {{ user.email }}</li>
+                       <li class="list-group-item indentation">2e : {{ user.username }}</li>
+                       <li class="list-group-item indentation">3e : {{ user.first_name }}</li>
+                   </ul>
+            </div>
+        </div>
+
+        <h2 class="pt-3" style="text-align:center">Mes Compétences</h2>
+        <div class="col bg-transparent text-black" style = "text-align:center">
+                <div class="mx-auto" style="width: 75%">
+                    <canvas id="myChart" width="0" display="block"></canvas>
+                </div>
+        </div>
+
+</div>
+
+<!-- Configuration Global du graphique radar -->
+<script>
+    /*Chart.defaults.plugins.title.display = true;
+    Chart.defaults.plugins.title.text = "Mes Compétences";
+    Chart.defaults.font.size = 20;*/
+</script>
+
+<script>
+  const ctx = document.getElementById('myChart');
+  new Chart(ctx, {
+
+    type: 'radar',
+
+    data: {
+      labels: ['score1', 'score2', 'score3', 'score4', 'score5'],
+      datasets: [{
+        label: '',
+        data: [{{ user.points.score1 }}, {{ user.points.score2 }}, {{ user.points.score3 }}, {{ user.points.score4 }}, {{ user.points.score5 }}],
+        /*fill:true,*/
+        borderWidth: 1
+      }]
+    },
+
+    options: {
+        plugins: {
+            title: {
+                <!-- text:'', -->
+                padding: {
+                            top:0,
+                            bottom:0
+                },
+                font: {
+                    size: 26
+                }
+           },
+
+           subtitle: {
+                text: 'Custom Chart Subtitle',
+           },
+        },
+
+
+        scales: {
+            r: {
+                beginAtZero: true,
+                max:100,
+                pointLabels: {
+                    color: 'black',
+                    font: {
+                        size: 26
+                    }
+                }
+            }
+        }
+
+
+    }
+  });
+</script>
+</body>
+</html>
+
+{% endblock %}

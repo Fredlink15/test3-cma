@@ -1,0 +1,209 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}Multiplication{% endblock %}
+
+{% block body %}
+
+<!--<!DOCTYPE html>
+<html lang="fr">-->
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Multiplication Quiz WebApp</title>
+	<script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
+	<script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js'></script>
+	<link rel="stylesheet" href="{% static 'css/stylecalc.css' %}">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+
+<body>
+	<!--<div class="text-center">
+		<button onclick="disable(this) ; able(hid_inp) ; able(hid_btn) ; able(hid_enregistrer) ; operations() ; changerCouleurEtFocus() ; demarrerTime()" class="form-control btn btn-primary mb-1" id="hid_demarrer" type="button">Démarrer</button>
+	</div>-->
+	<div class="text-center">
+		<button onclick="active() ; operations() ; changerCouleurEtFocus() ; demarrerTime()" class="form-control btn btn-primary mb-1" id="hid_demarrer" type="button"
+			hx-target="#hid_bloc0"
+			hx-get="{% url 'accounts:test_htmx' %}"
+			hx-trigger="click">
+		Démarrer</button>
+	</div>
+
+	<!-- Formulaire -->
+		<div class="container">
+			<div id="form">
+				<div class="row">
+					<div class="col-4 pt-3 text-start" >
+						<h6 id="hid_nombreQuestions">Nombre de Question(s) : 0</h6>
+						<!--<h6 id="nbrequestions">Nombre de questions : 0</h6>-->
+					</div>
+					<div class="col-4 pt-3 text-center">
+						<h6 id="hid_resultatsJustes">Réponse(s) Juste(s) : 0</h6>
+					</div>
+					<div class="col-4 pt-3 text-end">
+						<h6  id="hid_resultatsFaux">Réponse(s) Fausse(s) : 0</h6>
+					</div>
+				</div>
+
+				<div class="col-12 p-2"></div>
+
+				<form>
+					<div id="hid_container" class="row align-items-center border border-primary rounded bg-transparent p-5 shadow">
+						<div id="calcul" class="row align-items-center custom-line">
+
+							<div id="hid_bloc0" class="col-8 text-center align-self-center">
+								<h1 id="nombreMasque" class="fw-bold display-1 align-self-center align-middle"></h1>
+							</div>
+
+							<!--<div id="hid_bloc1" class="col-1 text-center align-self-center" >
+								<h1 id="hid_nombre1" class="fw-bold display-3"> </h1>
+							</div>
+
+							<div id="hid_bloc2" class="col-1 text-center align-self-center">
+								<h1 class="fw-bold display-3" id="hid_signe"></h1>
+							</div>
+
+							<div id="hid_bloc3" class="col-1 text-center align-self-center" >
+								<h1 id="hid_nombre2" class="fw-bold display-3"> </h1>
+							</div>
+
+							<div id="hid_bloc4" class="col-1 text-center align-self-center">
+								<h1 class="fw-bold display-3" id="hid_egal"></h1>
+							</div>
+
+							<div id="hid_bloc5" class="col-2 text-center align-self-center">
+								<h1 class="fw-bold display-3 align-self-center align-middle" id="hid_resultat"></h1>
+							</div>-->
+				</form>
+
+
+							<form method="POST" hx-post="{% url 'accounts:add_REPONSE' %}">
+								{% csrf_token %}
+
+								<div class="col-2">
+									<input class="form-control-lg w-100 h-100" type="number" name="name" id="hid_inp" placeholder="réponse" autofocus>
+								</div>
+
+								<div class="col-2 align-self-center">
+									<!--<button method="submit" onclick="disable(this) ; disable(hid_inp) ; able(hid_btn2) ; able(hid_enregistrer) ; disable(hid_btn_valider)" class="form-control btn btn-primary" id="hid_btn">Valider</button>-->
+									<input type="submit"
+
+										   onclick="disable(this) ; desactive()"
+										   value="Valider"
+										   class="form-control btn btn-primary"
+										   id="hid_btn_valider"
+										   disabled>
+
+									<div style="display:none" id="hid_div1">
+										<button onclick="demarrerTime() ; activeContinuer()  ; operations()  ; raz() ; changerCouleurEtFocus()"
+												class="form-control mt-2 btn btn-primary"
+												id="hid_btn2"
+												type="submit"
+												hx-target="#hid_bloc0"
+												hx-get="{% url 'accounts:test_htmx' %}"
+												hx-trigger="click">
+										Continuer</button>
+									</div>
+								</div>
+							</form>
+
+						</div>
+					</div>
+
+					<p class="text-left align-bottom mt-3 text-secondary">Temps : <span id="hid_timer">0</span> s</p>
+					<!-- LIGNE COMMENTAIRE ET MODAL-->
+					<div class="row">
+							<div class="col-3 text-left align-self-center">
+								<h1></h1>
+							</div>
+							<div class="col-6 text-left align-self-center" >
+								<h2 class="align-self-top" id="hid_commentaire" style="text-align:center"></h2>
+								<!--<h2 class="align-self-top" id="hid_commentaire" style="text-align:center"></h2>-->
+							</div>
+							<div class="col-3 d-grid gap-2 d-md-flex justify-content-md-end" >
+								<button id="hid_enregistrer" type="button" class="btn btn-primary mt-2 mb-2" data-bs-toggle="modal" data-bs-target="#modalWindow" disabled>
+									Enregistrer et arrêter
+								</button>
+							</div>
+					</div>
+
+
+
+			</div>
+		</div>
+
+
+<!--	<form method="POST" onsubmit="document.getElementById('hid_btn_valider').disabled=1;disable(Hid_inp)"
+		hx-target="#valeur"
+		hx-swap="innerHTML"
+        hx-post="{% url 'accounts:test_htmx' %}">
+		{% csrf_token %}
+		{{ form.as_p }}
+		<input type="submit" onclick="disable(this) ; disable(hid_inp) ; able(hid_btn2) ; able(hid_enregistrer)" value="Valider" class="form-control btn btn-primary" id="hid_btn_valider" disabled>
+	</form>
+-->
+
+
+
+	<!-- Fenêtre modal popup -->
+	<div class="modal fade" data-backdrop="static" id="modalWindow">
+	  <div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<h5 class="modal-title">Enregistrement en cours</h5>
+		  </div>
+		  <div class="modal-body">
+			  <p id="hid_modale_nombre_questions">Nombre de question(s) :</p>
+			  <p class="indentation" id="hid_modale_resultats_justes"> de réponses justes.</p>
+			  <p class="indentation" id="hid_modale_resultats_faux"> de réponses fausses.</p>
+			  <p class="indentation" id="hid_modale_temps"> Temps moyen</p>
+		  </div>
+		  <div class="modal-footer">
+				<form method="post" action="{% url 'accounts:addresult' %}">
+					{% csrf_token %}
+					<input type="hidden" type="number" id="hid_score_multiplication" name="score_multiplication" placeholder="score">
+					<input type="hidden" type="number" id="hid_score_addition" name="score_addition" placeholder="score">
+					<input type="hidden" type="number" id="hid_score_soustraction" name="score_soustraction" placeholder="score">
+					<input type="hidden" type="number" id="hid_score_division" name="score_division" placeholder="score">
+					<input type="hidden" type="number" id="hid_tablemultiplication_Niveau" name="tablemultiplication_Niveau" placeholder="score">
+
+					<input type="hidden" type="number" id="hid_duree_connexion" name="duree_connexion" placeholder="score">
+					<!--<input type="hidden" type="number" id="hid_horaire_arrivee" name="horaire_arrivee" placeholder="score">
+					<input type="hidden" type="number" id="hid_horaire_depart" name="horaire_depart" placeholder="score">-->
+
+
+					<input type="submit" value="Valider" class="btn btn-primary">
+				</form>
+		  </div>
+		</div>
+	  </div>
+	</div>
+
+	 <div class="card mx-auto mb-5" style="width: 18rem;">
+                    <div class="card-header"> Profil </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Email : {{ user.email }}</li>
+                        <li class="list-group-item">Pseudo : {{ user.username }}</li>
+                        <li class="list-group-item">Nom : {{ user.first_name }}</li>
+                        <li class="list-group-item">Prénom : {{ user.last_name }}</li>
+                     	<li class="list-group-item">score_multiplication : {{ user.score_multiplication }}</li>
+						<li class="list-group-item">score_addition : {{ user.score_addition }}</li>
+						<li class="list-group-item">score_soustraction : {{ user.score_soustraction }}</li>
+						<li class="list-group-item">score_division : {{ user.score_division }}</li>
+						<li class="list-group-item">Durée de connexion : {{ user.duree_connexion }}</li>
+						<li id="hid_niveau" class="list-group-item">{{ user.tablemultiplication_Niveau }}</li>
+					</ul>
+	 </div>
+
+	<!--<p id="hid_espace" hidden>&nbsp;&nbsp;&nbsp;</p>-->
+
+	<script src="{% static 'js/multiplication.js' %}"></script>
+	<script src="{% static 'js/progressbar.js' %}"></script>
+</body>
+</html>
+{% endblock %}
+
+
+
